@@ -106,7 +106,6 @@ class App extends React.Component {
               </div>
             )}
           />
-          <Route component={PageNotFound} />
         </Switch>
         <Footer />
       </div>
