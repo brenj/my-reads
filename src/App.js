@@ -6,6 +6,7 @@ import './App.css';
 import * as booksAPI from './api/books-api';
 import BookSearch from './component/BookSearch';
 import Footer from './component/Footer';
+import { getBooksByShelfTemplate, getShelvesWithTitles } from './utils.js';
 import NavBar from './component/NavBar';
 import Shelf from './component/Shelf';
 
@@ -22,21 +23,14 @@ const PageNotFound = () => (
 
 class App extends React.Component {
   state = {
-    books: {
-      currentlyReading: [],
-      read: [],
-      wantToRead: [],
-    },
+    books: getBooksByShelfTemplate(),
     welcomeVisible: true,
   };
 
   componentDidMount() {
     booksAPI.getAll().then((booksData) => {
-      const books = {
-        currentlyReading: [],
-        read: [],
-        wantToRead: [],
-      };
+      const books = getBooksByShelfTemplate();
+
       booksData.forEach((bookData) => {
         books[bookData.shelf].push(bookData);
       });
