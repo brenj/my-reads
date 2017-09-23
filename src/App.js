@@ -89,21 +89,14 @@ class App extends React.Component {
                       />
                     </div>
                   }
-                  <Shelf
-                    books={books.currentlyReading}
-                    name="Books you're currently reading"
-                    onShelfChanged={this.onShelfChanged}
-                  />
-                  <Shelf
-                    books={books.wantToRead}
-                    name="Books you want to read"
-                    onShelfChanged={this.onShelfChanged}
-                  />
-                  <Shelf
-                    books={books.read}
-                    name="Books you've finished reading"
-                    onShelfChanged={this.onShelfChanged}
-                  />
+                  {getShelvesWithTitles().map(([shelf, title]) => (
+                    <Shelf
+                      key={shelf}
+                      books={books[shelf]}
+                      name={title}
+                      onShelfChanged={this.onShelfChanged}
+                    />
+                  ))}
                 </Container>
               </div>
             )}
