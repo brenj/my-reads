@@ -15,7 +15,10 @@ const SHELVES = {
 
 export const getBooksByShelfTemplate = () => {
   const booksByShelf = {};
-  Object.keys(SHELVES).forEach(shelf => (booksByShelf[shelf] = []));
+
+  Object.keys(SHELVES).forEach((shelf) => {
+    booksByShelf[shelf] = [];
+  });
 
   return booksByShelf;
 };
