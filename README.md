@@ -37,33 +37,39 @@ Code Organization (src)
 -----------------------
 
 ``` console
-├── App.css                                                                                      │
-├── App.js                                                                                       │
-├── api                                                                                          │
-│   └── books-api.js                                                                             │
-├── component                                                                                    │
-│   ├── Book                                                                                     │
-│   │   ├── book.css                                                                             │
-│   │   └── index.js                                                                             │
-│   ├── BookDetails                                                                              │
-│   │   └── index.js                                                                             │
-│   ├── BookList                                                                                 │
-│   │   ├── book-list.css                                                                        │
-│   │   └── index.js                                                                             │
-│   ├── BookSearch                                                                               │
-│   │   ├── book-search.css                                                                      │
-│   │   └── index.js                                                                             │
-│   ├── Footer                                                                                   │
-│   │   ├── footer.css                                                                           │
-│   │   └── index.js                                                                             │
-│   ├── NavBar                                                                                   │
-│   │   └── index.js                                                                             │
-│   └── Shelf                                                                                    │
-│       ├── index.js                                                                             │
-│       └── shelf.css                                                                            │
-├── index.css                                                                                    │
-├── index.js                                                                                     │
-└── registerServiceWorker.js
+├── App.css             
+├── App.js              
+├── api                 
+│   └── books-api.js    
+├── component           
+│   ├── Book            
+│   │   ├── book.css    
+│   │   └── index.js    
+│   ├── BookCase        
+│   │   └── index.js    
+│   ├── BookDetails     
+│   │   └── index.js    
+│   ├── BookList        
+│   │   ├── book-list.css                       
+│   │   └── index.js    
+│   ├── BookSearch      
+│   │   ├── book-search.css                     
+│   │   └── index.js    
+│   ├── Footer          
+│   │   ├── footer.css  
+│   │   └── index.js    
+│   ├── NavBar          
+│   │   └── index.js    
+│   ├── Shelf           
+│   │   ├── index.js    
+│   │   └── shelf.css   
+│   └── WelcomeMessage  
+│       ├── index.js    
+│       └── welcome-message.css                 
+├── index.css           
+├── index.js            
+├── registerServiceWorker.js                    
+└── utils.js
 ```
 
 Grading (by Udacity)
