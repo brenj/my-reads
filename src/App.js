@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Container, Header, Message } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 
 import './App.css';
 import * as booksAPI from './api/books-api';
@@ -8,6 +8,7 @@ import BookCase from './component/BookCase';
 import BookSearch from './component/BookSearch';
 import Footer from './component/Footer';
 import NavBar from './component/NavBar';
+import WelcomeMessage from './component/WelcomeMessage';
 import { getBooksByShelfTemplate } from './utils';
 
 const PageNotFound = () => (
@@ -66,7 +67,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { books } = this.state;
+    const { books, welcomeVisible } = this.state;
 
     return (
       <div>
@@ -78,16 +79,12 @@ class App extends React.Component {
               <div>
                 <NavBar activeMenuItem="home" />
                 <Container>
-                  {this.state.welcomeVisible &&
-                    <div className="welcome-message">
-                      <Message
-                        onDismiss={this.handleDismissWelcome}
-                        header="Welcome to Udacity MyReads!"
-                        content="A bookshelf app for finding and organizing your favorite books."
-                        size="big"
-                        color="blue"
-                      />
-                    </div>
+                  {welcomeVisible &&
+                    <WelcomeMessage
+                      color="blue"
+                      handleDismissWelcome={this.handleDismissWelcome}
+                      size="large"
+                    />
                   }
                   <BookCase
                     books={books}
