@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Dropdown, Icon, Menu } from 'semantic-ui-react';
 
 const UDACITY_URL = 'https://www.udacity.com/course/react-nanodegree--nd019';
-const GITHUB_URL = (
-  'https://github.com/brenj/udacity/tree/master/react_nanodegree/my_reads');
+const GITHUB_URL = 'https://github.com/brenj/my-reads';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/brenj';
 
 const propTypes = {
