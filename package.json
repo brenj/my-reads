@@ -2,6 +2,7 @@
   "name": "my_reads",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://brenj.github.io/my-reads",
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -13,6 +14,8 @@
   },
   "scripts": {
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "lint": "eslint src; exit 0",
     "start": "react-scripts start",
@@ -23,6 +26,7 @@
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0"
+    "eslint-plugin-react": "^7.3.0",
+    "gh-pages": "^1.0.0"
   }
 }
