@@ -4,11 +4,11 @@ import { Container, Header, Message } from 'semantic-ui-react';
 
 import './App.css';
 import * as booksAPI from './api/books-api';
+import BookCase from './component/BookCase';
 import BookSearch from './component/BookSearch';
 import Footer from './component/Footer';
-import { getBooksByShelfTemplate, getShelvesWithTitles } from './utils.js';
 import NavBar from './component/NavBar';
-import Shelf from './component/Shelf';
+import { getBooksByShelfTemplate } from './utils';
 
 const PageNotFound = () => (
   <div>
@@ -66,7 +66,7 @@ class App extends React.Component {
   }
 
   render() {
-    const books = this.state.books;
+    const { books } = this.state;
 
     return (
       <div>
@@ -89,14 +89,10 @@ class App extends React.Component {
                       />
                     </div>
                   }
-                  {getShelvesWithTitles().map(([shelf, title]) => (
-                    <Shelf
-                      key={shelf}
-                      books={books[shelf]}
-                      name={title}
-                      onShelfChanged={this.onShelfChanged}
-                    />
-                  ))}
+                  <BookCase
+                    books={books}
+                    onShelfChanged={this.onShelfChanged}
+                  />
                 </Container>
               </div>
             )}
