@@ -9,7 +9,6 @@ import BookSearch from './component/BookSearch';
 import Footer from './component/Footer';
 import NavBar from './component/NavBar';
 import WelcomeMessage from './component/WelcomeMessage';
-import { getBooksByShelfTemplate } from './utils';
 
 const PageNotFound = () => (
   <div>
@@ -23,43 +22,26 @@ const PageNotFound = () => (
 );
 
 class App extends React.Component {
-  state = {
-    books: getBooksByShelfTemplate(),
-    welcomeVisible: true,
-  };
+  state = { books: [], welcomeVisible: true };
 
   componentDidMount() {
-    booksAPI.getAll().then((booksData) => {
-      const books = getBooksByShelfTemplate();
-
-      booksData.forEach((bookData) => {
-        books[bookData.shelf].push(bookData);
-      });
+    booksAPI.getAll().then((books) => {
       this.setState({ books });
     });
   }
 
-  onShelfChanged = (book, toShelf) => {
-    const fromShelf = book.shelf;
-    const specifiedBook = { ...book, shelf: toShelf };
-
+  onShelfChanged = (bookToUpdate, toShelf) => {
     this.setState((prevState) => {
-      const newState = { ...prevState };
-
-      // Add specified book to new, valid shelf
-      if (toShelf !== 'none') {
-        newState.books[toShelf] = [
-          ...newState.books[toShelf], specifiedBook];
-      }
-
-      // Remove specified book from old, valid shelf
-      if (fromShelf !== 'none') {
-        newState.books[fromShelf] = newState.books[fromShelf].filter(
-          bookOnFromShelf => bookOnFromShelf.id !== specifiedBook.id);
-      }
+      const updatedBooks = prevState.books.map((book) => {
+        if (book.id === bookToUpdate.id) {
+          book.shelf = toShelf;
+        }
+        return book;
+      });
+      return { ...prevState, books: updatedBooks };
     });
 
-    booksAPI.update(specifiedBook, toShelf);
+    booksAPI.update(bookToUpdate, toShelf);
   }
 
   handleDismissWelcome = () => {
@@ -101,7 +83,10 @@ class App extends React.Component {
               <div>
                 <NavBar activeMenuItem="search" />
                 <Container>
-                  <BookSearch onShelfChanged={this.onShelfChanged} />
+                  <BookSearch
+                    books={books}
+                    onShelfChanged={this.onShelfChanged}
+                  />
                 </Container>
               </div>
             )}

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Shelf from '../Shelf';
-import { getShelvesWithTitles } from '../../utils';
+import { getBooksByShelfTemplate, getShelvesWithTitles } from '../../utils';
 
 const propTypes = {
   books: PropTypes.objectOf(PropTypes.array).isRequired,
@@ -11,13 +11,18 @@ const propTypes = {
 
 function BookCase(props) {
   const { books } = props;
+  const booksByShelf = getBooksByShelfTemplate();
+
+  books.forEach((book) => {
+    booksByShelf[book.shelf].push(book);
+  });
 
   return (
     <div>
       {getShelvesWithTitles().map(([shelf, title]) => (
         <Shelf
           key={shelf}
-          books={books[shelf]}
+          books={booksByShelf[shelf]}
           name={title}
           onShelfChanged={props.onShelfChanged}
         />
