@@ -9,6 +9,7 @@ import BookSearch from './component/BookSearch';
 import Footer from './component/Footer';
 import NavBar from './component/NavBar';
 import WelcomeMessage from './component/WelcomeMessage';
+import { getIdToShelfMap } from './utils';
 
 const PageNotFound = () => (
   <div>
@@ -25,8 +26,11 @@ class App extends React.Component {
   state = { books: [], welcomeVisible: true };
 
   componentDidMount() {
+    this.idToShelfMap = {};
+
     booksAPI.getAll().then((books) => {
       this.setState({ books });
+      this.idToShelfMap = getIdToShelfMap(books);
     });
   }
 
@@ -58,7 +62,8 @@ class App extends React.Component {
 
         return { ...prevState, books: updatedBooks };
       });
-      return { ...prevState, books: updatedBooks };
+      // Update id to shelf mapping
+      this.idToShelfMap[bookToUpdate.id] = toShelf;
     });
   }
 
@@ -102,7 +107,7 @@ class App extends React.Component {
                 <NavBar activeMenuItem="search" />
                 <Container>
                   <BookSearch
-                    books={books}
+                    idToShelfMap={this.idToShelfMap}
                     onShelfChanged={this.onShelfChanged}
                   />
                 </Container>

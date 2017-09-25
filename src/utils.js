@@ -35,3 +35,13 @@ export const getShelvesWithTitles = () => {
 
   return shelvesWithTitles;
 };
+
+export const getIdToShelfMap = (books) => {
+  const idToShelfMap = {};
+
+  books.forEach((book) => {
+    idToShelfMap[book.id] = book.shelf;
+  });
+
+  return idToShelfMap;
+};

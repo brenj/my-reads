@@ -36,7 +36,14 @@ class BookSearch extends React.Component {
 
     booksAPI.search(query).then((booksData) => {
       if (this.state.query === query) {
-        this.setState({ books: booksData, loading: false });
+        const { idToShelfMap } = this.props;
+
+        const books = booksData.map((bookData) => {
+          const shelf = idToShelfMap[bookData.id] || 'none';
+          return { ...bookData, shelf };
+        });
+
+        this.setState({ books, loading: false });
       }
     });
   };
