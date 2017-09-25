@@ -1,14 +1,17 @@
 const SHELVES = {
   currentlyReading: {
-    title: 'Books you\'re currently reading',
+    name: 'Currently Reading',
+    heading: 'Books you\'re currently reading',
     order: 1,
   },
   wantToRead: {
-    title: 'Books you want to read',
+    name: 'Want to Read',
+    heading: 'Books you want to read',
     order: 2,
   },
   read: {
-    title: 'Books you\'ve finished reading',
+    name: 'Finished Reading',
+    heading: 'Books you\'ve finished reading',
     order: 3,
   },
 };
@@ -23,17 +26,35 @@ export const getBooksByShelfTemplate = () => {
   return booksByShelf;
 };
 
-export const getShelvesWithTitles = () => {
-  const shelvesWithTitles = [];
-  const orderedShelves = Object.keys(SHELVES).sort((s1, s2) => (
+export const getOrderedShelves = () => (
+  Object.keys(SHELVES).sort((s1, s2) => (
     SHELVES[s1].order - SHELVES[s2].order
-  ));
+  )));
 
-  orderedShelves.forEach((shelf) => {
-    shelvesWithTitles.push([shelf, SHELVES[shelf].title]);
+export const getShelvesWithHeadings = () => {
+  const shelvesWithHeadings = [];
+
+  getOrderedShelves().forEach((shelf) => {
+    shelvesWithHeadings.push([shelf, SHELVES[shelf].heading]);
   });
 
-  return shelvesWithTitles;
+  return shelvesWithHeadings;
+};
+
+export const getShelfOptions = () => {
+  const shelfOptions = [];
+
+  getOrderedShelves().forEach((shelf) => {
+    shelfOptions.push({
+      key: shelf,
+      text: SHELVES[shelf].name,
+      value: shelf,
+    });
+  });
+
+  shelfOptions.push({ key: 'none', value: 'none', text: 'No Shelf' });
+
+  return shelfOptions;
 };
 
 export const getIdToShelfMap = (books) => {

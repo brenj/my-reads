@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Form, Image } from 'semantic-ui-react';
 
 import './book.css';
 import BookDetails from '../BookDetails';
+import { getShelfOptions } from '../../utils';
 
 const NO_COVER_IMAGE = (
   'http://via.placeholder.com/220x220?text=No%20Cover%20Image'
@@ -20,16 +21,14 @@ const propTypes = {
 };
 
 class Book extends React.Component {
-  state = {
-    shelf: 'none',
-  };
+  state = { shelf: 'none' };
 
   componentWillMount() {
     this.setState({ shelf: this.props.book.shelf });
   }
 
-  handleChange = (event) => {
-    const toShelf = event.target.value;
+  handleChange = (event, data) => {
+    const toShelf = data.value;
 
     this.setState({ shelf: toShelf });
     this.props.onShelfChanged(this.props.book, toShelf);
@@ -50,17 +49,15 @@ class Book extends React.Component {
             height="220"
           />
           <Card.Content extra textAlign="center">
-            <select
-              className="ui dropdown"
-              value={this.state.shelf}
-              onChange={this.handleChange}
-            >
-              <option value="move" disabled>Choose a shelf ...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Finished Reading</option>
-              <option value="none">No shelf</option>
-            </select>
+            <Form>
+              <Form.Select
+                header="-- Choose a Shelf --"
+                value={this.state.shelf}
+                onChange={this.handleChange}
+                options={getShelfOptions()}
+                compact
+              />
+            </Form>
             <BookDetails book={book} thumbnail={thumbnail} />
           </Card.Content>
         </Card>

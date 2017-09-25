@@ -3,7 +3,13 @@ import React from 'react';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 
 const bookDetailsButton = (
-  <Button attached="right" color="blue" icon={<Icon name="info" />} />
+  <Button
+    fluid
+    basic
+    content="Book Details"
+    style={{ marginTop: '10px' }}
+    icon={<Icon name="info" />}
+  />
 );
 
 const propTypes = {
