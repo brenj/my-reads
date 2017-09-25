@@ -5,7 +5,11 @@ import Shelf from '../Shelf';
 import { getBooksByShelfTemplate, getShelvesWithTitles } from '../../utils';
 
 const propTypes = {
-  books: PropTypes.objectOf(PropTypes.array).isRequired,
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      shelf: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
   onShelfChanged: PropTypes.func.isRequired,
 };
 

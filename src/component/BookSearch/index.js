@@ -7,6 +7,7 @@ import * as booksAPI from '../../api/books-api';
 import BookList from '../BookList';
 
 const propTypes = {
+  idToShelfMap: PropTypes.objectOf(PropTypes.string).isRequired,
   onShelfChanged: PropTypes.func.isRequired,
 };
 
