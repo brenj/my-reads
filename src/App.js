@@ -31,17 +31,35 @@ class App extends React.Component {
   }
 
   onShelfChanged = (bookToUpdate, toShelf) => {
-    this.setState((prevState) => {
-      const updatedBooks = prevState.books.map((book) => {
-        if (book.id === bookToUpdate.id) {
-          book.shelf = toShelf;
+    booksAPI.update(bookToUpdate, toShelf).then(() => {
+      this.setState((prevState) => {
+        const fromShelf = bookToUpdate.shelf;
+        let updatedBooks = null;
+
+        if (toShelf === 'none') {
+          // Remove book from shelf
+          updatedBooks = prevState.books.filter(book => (
+            book.id !== bookToUpdate.id
+          ));
+        } else if (fromShelf === 'none') {
+          // Add book to shelf
+          const updatedBook = { ...bookToUpdate, shelf: toShelf };
+          updatedBooks = [...prevState.books, updatedBook];
+        } else {
+          // Move book from one shelf to another
+          updatedBooks = prevState.books.map((book) => {
+            const updatedBook = book;
+            if (book.id === bookToUpdate.id) {
+              updatedBook.shelf = toShelf;
+            }
+            return updatedBook;
+          });
         }
-        return book;
+
+        return { ...prevState, books: updatedBooks };
       });
       return { ...prevState, books: updatedBooks };
     });
-
-    booksAPI.update(bookToUpdate, toShelf);
   }
 
   handleDismissWelcome = () => {
