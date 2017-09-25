@@ -26,11 +26,9 @@ class App extends React.Component {
   state = { books: [], welcomeVisible: true };
 
   componentDidMount() {
-    this.idToShelfMap = {};
-
     booksAPI.getAll().then((books) => {
-      this.setState({ books });
       this.idToShelfMap = getIdToShelfMap(books);
+      this.setState({ books });
     });
   }
 
@@ -70,6 +68,8 @@ class App extends React.Component {
   handleDismissWelcome = () => {
     this.setState({ welcomeVisible: false });
   }
+
+  idToShelfMap = {};
 
   render() {
     const { books, welcomeVisible } = this.state;
