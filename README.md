@@ -1,3 +1,5 @@
+[![Live Demo](https://img.shields.io/badge/live%20demo-active-brightgreen.svg?style=flat-square)](https://brenj.github.io/my-reads/)
+
 MyReads: A Book Lending App
 ===========================
 
