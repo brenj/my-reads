@@ -85,5 +85,6 @@ Search Page        |Meets Specifications    |Meets Specifications
 Routing            |Meets Specifications    |Meets Specifications
 Code Functionality |Meets Specifications    |Meets Specifications
 
-> The Book Lending App is working great. Your project looks amazing, one of the best I've seen so far.  
-> \- Reviewer
+##### Excerpt from review
+
+> "The Book Lending App is working great. Your project looks amazing, one of the best I've seen so far."
