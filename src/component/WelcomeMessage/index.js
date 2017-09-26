@@ -4,7 +4,7 @@ import { Message } from 'semantic-ui-react';
 
 import './welcome-message.css';
 
-const WELCOME_MESSAGE_HEADER = 'Welcome to Udacity MyReads!';
+const WELCOME_MESSAGE_HEADER = 'Welcome to MyReads!';
 const WELCOME_MESSAGE_CONTENT = (
   'A bookshelf app for finding and organizing your favorite books.');
 
