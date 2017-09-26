@@ -62,7 +62,7 @@ Code Organization (src)
 │   │   └── index.js    
 │   ├── NavBar          
 │   │   └── index.js    
-│   ├── Shelf           
+│   ├── BookShelf       
 │   │   ├── index.js    
 │   │   └── shelf.css   
 │   └── WelcomeMessage  
