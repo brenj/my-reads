@@ -77,8 +77,11 @@ Grading (by Udacity)
 
 Criteria           |Highest Grade Possible  |Grade Recieved
 -------------------|------------------------|--------------
-Application Setup  |Meets Specifications    |
-Main Page          |Meets Specifications    |
-Search Page        |Meets Specifications    |
-Routing            |Meets Specifications    |
-Code Functionality |Meets Specifications    |
+Application Setup  |Meets Specifications    |Meets Specifications
+Main Page          |Meets Specifications    |Meets Specifications
+Search Page        |Meets Specifications    |Meets Specifications
+Routing            |Meets Specifications    |Meets Specifications
+Code Functionality |Meets Specifications    |Meets Specifications
+
+> The Book Lending App is working great. Your project looks amazing, one of the best I've seen so far.  
+> \- Reviewer
