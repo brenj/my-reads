@@ -40,7 +40,7 @@ class BookSearch extends React.Component {
         const { idToShelfMap } = this.props;
 
         const books = booksData.map((bookData) => {
-          const shelf = idToShelfMap[bookData.id] || 'none';
+          const shelf = idToShelfMap.get(bookData.id) || 'none';
           return { ...bookData, shelf };
         });
 

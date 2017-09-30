@@ -61,7 +61,7 @@ class App extends React.Component {
         return { ...prevState, books: updatedBooks };
       });
       // Update id to shelf mapping
-      this.idToShelfMap[bookToUpdate.id] = toShelf;
+      this.idToShelfMap.set(bookToUpdate.id, toShelf);
     });
   }
 
@@ -69,7 +69,7 @@ class App extends React.Component {
     this.setState({ welcomeVisible: false });
   }
 
-  idToShelfMap = {};
+  idToShelfMap = new Map();
 
   render() {
     const { books, welcomeVisible } = this.state;

@@ -58,10 +58,10 @@ export const getShelfOptions = () => {
 };
 
 export const getIdToShelfMap = (books) => {
-  const idToShelfMap = {};
+  const idToShelfMap = new Map();
 
   books.forEach((book) => {
-    idToShelfMap[book.id] = book.shelf;
+    idToShelfMap.set(book.id, book.shelf);
   });
 
   return idToShelfMap;
